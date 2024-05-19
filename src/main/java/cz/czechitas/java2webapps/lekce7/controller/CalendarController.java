@@ -13,49 +13,49 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class CalendarController {
-  private final CalendarService service;
+    private final CalendarService service;
 
-  @Autowired
-  public CalendarController(CalendarService service) {
-    this.service = service;
-  }
+    @Autowired
+    public CalendarController(CalendarService service) {
+        this.service = service;
+    }
 
-  @ModelAttribute("currentYear")
-  public int getCurrentYear() {
-    return service.getCurrentYear();
-  }
+    @ModelAttribute("currentYear")
+    public int getCurrentYear() {
+        return service.getCurrentYear();
+    }
 
-  @GetMapping("/")
-  public String index() {
-    return "index";
-  }
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
 
-  @GetMapping("/vypocet")
-  public String form(int rok, String typ) {
-    return String.format("redirect:/%s/%d", typ, rok);
-  }
+    @GetMapping("/vypocet")
+    public String form(int rok, String typ) {
+        return String.format("redirect:/%s/%d", typ, rok);
+    }
 
-  @GetMapping("/easter/{year}")
-  public ModelAndView easter(@PathVariable int year) {
-    return new ModelAndView("easter")
-            .addObject("calendar", service.easter(year));
-  }
+    @GetMapping("/easter/{year}")
+    public ModelAndView easter(@PathVariable int year) {
+        return new ModelAndView("easter")
+                .addObject("calendar", service.easter(year));
+    }
 
-  @GetMapping("/pentecost/{year}")
-  public ModelAndView pentecost(@PathVariable int year) {
-    return new ModelAndView("pentecost")
-            .addObject("calendar", service.pentecost(year));
-  }
+    @GetMapping("/pentecost/{year}")
+    public ModelAndView pentecost(@PathVariable int year) {
+        return new ModelAndView("pentecost")
+                .addObject("calendar", service.pentecost(year));
+    }
 
-  @GetMapping("/christmas/{year}")
-  public ModelAndView christmas(@PathVariable int year) {
-    return new ModelAndView("christmas")
-            .addObject("calendar", service.christmas(year));
-  }
+    @GetMapping("/christmas/{year}")
+    public ModelAndView christmas(@PathVariable int year) {
+        return new ModelAndView("christmas")
+                .addObject("calendar", service.christmas(year));
+    }
 
-  @GetMapping("/sylvester/{year}")
-  public ModelAndView sylvester(@PathVariable int year) {
-    return new ModelAndView("sylvester")
-            .addObject("calendar", service.sylvester(year));
-  }
+    @GetMapping("/sylvester/{year}")
+    public ModelAndView sylvester(@PathVariable int year) {
+        return new ModelAndView("sylvester")
+                .addObject("calendar", service.sylvester(year));
+    }
 }

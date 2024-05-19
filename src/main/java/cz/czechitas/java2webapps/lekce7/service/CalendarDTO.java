@@ -9,23 +9,23 @@ import java.util.LinkedList;
  * @author Filip Jirsák
  */
 public class CalendarDTO implements Iterable<DateDTO> {
-  private final Deque<DateDTO> list = new LinkedList<>();
+    private final Deque<DateDTO> list = new LinkedList<>();
 
-  public CalendarDTO append(String label, LocalDate date) {
-    list.add(new DateDTO(label, date));
-    return this;
-  }
+    public CalendarDTO append(String label, LocalDate date) {
+        list.add(new DateDTO(label, date));
+        return this;
+    }
 
-  @Override
-  public Iterator<DateDTO> iterator() {
-    return list.iterator();
-  }
+    @Override
+    public Iterator<DateDTO> iterator() {
+        return list.iterator();
+    }
 
-  public LocalDate getFirstDay() {
-    return list.getFirst().date();
-  }
+    public LocalDate getFirstDay() {
+        return list.getFirst().date();
+    }
 
-  public LocalDate getLastDay() {
-    return list.getLast().date();
-  }
+    public LocalDate getLastDay() {
+        return list.getLast().date();
+    }
 }
